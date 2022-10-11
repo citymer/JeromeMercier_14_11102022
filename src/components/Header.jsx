@@ -1,10 +1,12 @@
-import React from 'react';
+import React from 'react'
+import logo from '../assets/logo_hrnet.png'
 
 const Header = () => {
     return (
-        <div>
-            ça marche
-        </div>
+        <header>
+            <img src={logo} alt="logo" className='logo' />
+            
+        </header>
     );
 };
 
