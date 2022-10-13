@@ -1,0 +1,7 @@
+// breakpoint
+
+@mixin large {
+  @media screen and (max-width: 810px) {
+    @content;
+  }
+}

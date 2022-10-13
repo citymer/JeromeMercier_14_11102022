@@ -1,22 +1,26 @@
 @import '../utils/variables.scss';
+@import '../utils/mixins.scss';
 
 .formulaire {
   height: 1100px;
   text-align: center;
   margin-top: 40px;
   background-color: $color-border;
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
   border-radius: 60px;
+  @include large {
+    width: 95%;
+  }
 }
 
 .css-b62m3t-container {
-  width: 300px;
+  width: 280px;
   margin: 0 auto;
 }
 input {
   margin-top: 5px;
-  width: 300px;
+  width: 280px;
   min-height: 38px;
   border-radius: 4px;
   border-width: 1px;
@@ -34,7 +38,7 @@ p {
   font-weight: 500;
 }
 fieldset {
-  width: 360px;
+  width: 294px;
   margin: 0 auto;
   margin-top: 10px;
 }
