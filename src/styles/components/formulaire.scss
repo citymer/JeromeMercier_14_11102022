@@ -43,5 +43,14 @@ fieldset {
   background-color: $color-primaire;
   height: 60px;
   border-radius: 20px;
-  border-color: black;
+  border-color: black 2px;
+  color: white;
+  font-size: 30px;
+  border-bottom: 5px solid rgb(165, 161, 161);
+  text-shadow: 0px -2px $color-border;
+  transition: all 0.1s;
+}
+.submit:active {
+  transform: translate(0px, 2px);
+  border-bottom: 1px solid;
 }

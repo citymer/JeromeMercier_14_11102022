@@ -147,7 +147,7 @@ const Formulaire = () => {
         )}
       />
       <p className="error">{errors.departement?.message}</p>
-      <input type="submit" className="submit" />
+      <input type="submit" className="submit" value="Save" />
     </form>
   )
 }

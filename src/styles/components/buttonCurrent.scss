@@ -1,21 +1,21 @@
 @import '../utils/variables.scss';
 
 .link {
-    text-align: center;
+  text-align: center;
 }
-.lien{
-    text-align: center;
-    padding: 10px 40px;
-    border-radius: 10px;
-    font-size: 25px;
-    color: $white;
-    text-decoration: none;
-    background-color: $color-primaire;
-    border-bottom: 5px solid $color-border;
-    text-shadow: 0px -2px $color-border;
-    transition: all 0.1s;
+.lien {
+  text-align: center;
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-size: 25px;
+  color: $white;
+  text-decoration: none;
+  background-color: $color-primaire;
+  border-bottom: 5px solid $color-border;
+  text-shadow: 0px -2px $color-border;
+  transition: all 0.1s;
 }
 .lien:active {
-    transform: translate(0px,2px);
-    border-bottom: 1px solid;
+  transform: translate(0px, 2px);
+  border-bottom: 1px solid;
 }
