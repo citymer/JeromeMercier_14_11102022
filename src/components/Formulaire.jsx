@@ -1,67 +1,155 @@
-import React from 'react';
+import React from 'react'
 import Select from 'react-select'
-import { useForm,Controller } from "react-hook-form";
+import { useForm, Controller } from 'react-hook-form'
 
 const Formulaire = () => {
-    const { register,handleSubmit,control,formState:{errors}} = useForm(
-      {defaultValues: {firstName:"",lastName:"",zipcode:""}});
-  
-    return (
-    <form onSubmit={handleSubmit((data) => {
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      street: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      departement: '',
+    },
+  })
+
+  return (
+    <form
+      onSubmit={handleSubmit((data) => {
         console.log(data)
-    })}>
+      })}
+    >
       <p>First Name</p>
-      <input  {...register('firstName',{required: "this is required", minLength:{
-        value:2,message:"Min length is 2"},pattern:/[A-Za-z]/})}/> 
-      <p>{errors.firstName?.message}</p> 
-        <p>last Name</p>
-      <input {...register("lastName",{required: "this is required", minLength:{
-        value:2,
-        message:"Min length is 2"
-      }})}/>
-      <p>{errors.lastName?.message}</p> 
+      <input
+        {...register('firstName', {
+          required: 'this is required',
+          minLength: {
+            value: 2,
+            message: 'Min length is 2',
+          },
+          pattern: /[A-Za-z]/,
+        })}
+      />
+      <p className="error">{errors.firstName?.message}</p>
+      <p>last Name</p>
+      <input
+        {...register('lastName', {
+          required: 'this is required',
+          minLength: {
+            value: 2,
+            message: 'Min length is 2',
+          },
+          pattern: /[A-Za-z]/,
+        })}
+      />
+      <p className="error">{errors.lastName?.message}</p>
       <p>Date of Birth</p>
-      <input type="date"{...register("date", {valueAsDate:true})}/>
+      <Controller
+        name="date"
+        control={control}
+        defaultValue=""
+        rules={{
+          required: {
+            value: true,
+            message: 'Enter Date of birth',
+          },
+        }}
+        render={({ field: { ref, ...rest } }) => (
+          <input type="date" {...rest} />
+        )}
+      />
+      <p className="error">{errors.date?.message}</p>
       <p>Start Date</p>
-      <input type="date"{...register("startdate", {valueAsDate:true})}/>
+      <Controller
+        name="stardate"
+        control={control}
+        defaultValue=""
+        rules={{
+          required: {
+            value: true,
+            message: 'Enter Start date',
+          },
+        }}
+        render={({ field: { ref, ...rest } }) => (
+          <input type="date" {...rest} />
+        )}
+      />
+      <p className="error">{errors.stardate?.message}</p>
       <fieldset>
         <legend>Address</legend>
         <p>Street</p>
-        <input {...register("street", {required:"this is required"})}/>
+        <input {...register('street', { required: 'this is required' })} />
+        <p className="error">{errors.street?.message}</p>
         <p>City</p>
-        <input {...register("city", {required:"this is required"})}/>
+        <input {...register('city', { required: 'this is required' })} />
+        <p className="error">{errors.city?.message}</p>
         <p>State</p>
         <Controller
-        name="select"
-        control={control}
-        render={({ field }) => <Select 
-          {...field} 
-          options={[
-            { value: "chocolate", label: "Chocolate" },
-            { value: "strawberry", label: "Strawberry" },
-            { value: "vanilla", label: "Vanilla" }
-          ]} 
-          />}/>
-          <p>Zip Code</p>
-        <input type="number" {...register("zipcode",{min:0,max: 999999})}/>
+          name="state"
+          control={control}
+          rules={{
+            required: {
+              value: true,
+              message: 'this is required',
+            },
+          }}
+          render={({ field }) => (
+            <Select
+              {...field}
+              options={[
+                { value: 'choco', label: 'Chocolate' },
+                { value: 'strawberry', label: 'Strawberry' },
+                { value: 'vanilla', label: 'Vanilla' },
+              ]}
+            />
+          )}
+        />
+        <p className="error">{errors.state?.message}</p>
+        <p>Zip Code</p>
+        <input
+          type="number"
+          {...register('zipcode', {
+            required: 'this is required',
+            min: 0,
+            max: 999999,
+          })}
+        />
+        <p className="error">{errors.zipcode?.message}</p>
       </fieldset>
       <p>Departement</p>
       <Controller
-        name="Departement"
+        name="departement"
+        rules={{
+          required: {
+            value: true,
+            message: 'this is required',
+          },
+        }}
         control={control}
-        render={({ field }) => <Select 
-          {...field} 
-          options={[
-            { value: "sales", label: "Sales" },
-            { value: "marketing", label: "Marketing" },
-            { value: "engineering", label: "Engineering" },
-            { value: "humanresources", label: "Human Resources" },
-            { value: "legal", label: "Legal" }
-          ]} 
-        />}/>
-      <input type="submit" className='submit' />
+        render={({ field }) => (
+          <Select
+            {...field}
+            options={[
+              { value: 'sales', label: 'Sales' },
+              { value: 'marketing', label: 'Marketing' },
+              { value: 'engineering', label: 'Engineering' },
+              { value: 'humanresources', label: 'Human Resources' },
+              { value: 'legal', label: 'Legal' },
+            ]}
+          />
+        )}
+      />
+      <p className="error">{errors.departement?.message}</p>
+      <input type="submit" className="submit" />
     </form>
-    );
-};
+  )
+}
 
-export default Formulaire;
+export default Formulaire
