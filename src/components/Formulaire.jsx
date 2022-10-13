@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Select from 'react-select'
 import { useForm, Controller } from 'react-hook-form'
 
@@ -7,25 +7,27 @@ const Formulaire = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm({
     defaultValues: {
       firstName: '',
       lastName: '',
       street: '',
       city: '',
-      state: '',
       zipcode: '',
-      departement: '',
     },
   })
 
+  const onSubmit = (data) => console.log(data)
+
+  useEffect(() => {
+    reset()
+  }, [isSubmitSuccessful, reset])
+
   return (
-    <form
-      onSubmit={handleSubmit((data) => {
-        console.log(data)
-      })}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {isSubmitSuccessful && <div className="alert">Employee Created! </div>}
       <p>First Name</p>
       <input
         {...register('firstName', {
