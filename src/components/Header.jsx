@@ -2,12 +2,17 @@ import React from 'react'
 
 import logo from '../assets/logo_hrnet.png'
 
-const Header = () => {
-    return (
-        <header>
-            <img src={logo} alt="logo" className='logo' /> 
-        </header>
-    );
-};
+/**
+ * builds the header
+ * @returns header
+ */
 
-export default Header;
+const Header = () => {
+  return (
+    <header>
+      <img src={logo} alt="logo" className="logo" />
+    </header>
+  )
+}
+
+export default Header

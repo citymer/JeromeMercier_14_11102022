@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Select from 'react-select'
 import { useForm, Controller } from 'react-hook-form'
 import { statesName } from '../datas/states'
+import { employeesList } from '../datas/employees'
 
 const Formulaire = () => {
+  const [form, setForm] = useState({})
+  const [employeesData, setEmployeesData] = useState(employeesList)
+  console.log(employeesData)
   const {
     register,
     handleSubmit,
     control,
-    reset,
+
     formState: { errors, isSubmitSuccessful },
   } = useForm({
     defaultValues: {
@@ -19,8 +23,7 @@ const Formulaire = () => {
       zipcode: '',
     },
   })
-  const [form, setForm] = useState({})
-  console.log(form)
+
   const onSubmit = (data) => {
     setForm({
       firstname: data.firstName,
@@ -33,7 +36,13 @@ const Formulaire = () => {
       state: data.state.value,
       zipcode: data.zipcode,
     })
+    saveForm(form)
   }
+
+  const saveForm = () => {
+    setEmployeesData([...employeesData, form])
+  }
+
   /*
   useEffect(() => {
     reset()

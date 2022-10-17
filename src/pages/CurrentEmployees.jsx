@@ -1,20 +1,26 @@
-import React from 'react';
-import BasicTable from '../components/BasicTable';
-import Header from '../components/Header';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import BasicTable from '../components/BasicTable'
+import Header from '../components/Header'
+import { Link } from 'react-router-dom'
 
+/**
+ * function that create the current-employees page with its components
+ * @returns the current-employees page html
+ */
 const CurrentEmployees = () => {
-    return (
-        <div>
-            <Header/>
-            <div className='contentTable'>
-            <BasicTable/>
-            </div>
-            <div className='link'>
-            <Link className='lien' to="/">Home</Link>
-            </div>
-        </div>
-    );
-};
+  return (
+    <div>
+      <Header />
+      <div className="contentTable">
+        <BasicTable />
+      </div>
+      <div className="link">
+        <Link className="lien" to="/">
+          Home
+        </Link>
+      </div>
+    </div>
+  )
+}
 
-export default CurrentEmployees;
+export default CurrentEmployees
