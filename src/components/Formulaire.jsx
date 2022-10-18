@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Select from 'react-select'
 import { useForm, Controller } from 'react-hook-form'
 import { statesName } from '../datas/states'
-import { employeesList } from '../datas/employees'
+import { DataContext } from '../utils/context'
+//import { employeesList } from '../datas/employees'
 
 const Formulaire = () => {
   const [form, setForm] = useState({})
-  const [employeesData, setEmployeesData] = useState(employeesList)
-  console.log(employeesData)
+  //const [employeesData, setEmployeesData] = useState(employeesList)
+  const { addEmployees } = useContext(DataContext)
+  //const { setEmployeesData } = useContext(DataContext)
+  //console.log(employeesData)
+  //console.log(form)
   const {
     register,
     handleSubmit,
@@ -23,8 +27,11 @@ const Formulaire = () => {
       zipcode: '',
     },
   })
-
-  const onSubmit = (data) => {
+  const createSucces = () => {
+    addEmployees(form)
+  }
+  const onSubmit = (data, e) => {
+    e.preventDefault()
     setForm({
       firstname: data.firstName,
       lastname: data.lastName,
@@ -36,11 +43,7 @@ const Formulaire = () => {
       state: data.state.value,
       zipcode: data.zipcode,
     })
-    saveForm(form)
-  }
-
-  const saveForm = () => {
-    setEmployeesData([...employeesData, form])
+    createSucces()
   }
 
   /*
@@ -50,7 +53,7 @@ const Formulaire = () => {
 */
   return (
     <div>
-      {isSubmitSuccessful && <div className="alert">Employee Created! </div>}
+      {isSubmitSuccessful && <div className="alert">Employee Created! && </div>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <p>First Name</p>
         <input

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import MaterialTable from 'material-table'
 import tableIcons from '../utils/IconProvider.js'
-import { employeesList } from '../datas/employees.js'
+import { DataContext } from '../utils/context.jsx'
 
 const columns = [
   { title: 'Firstname', field: 'firstname' },
@@ -16,11 +16,12 @@ const columns = [
 ]
 
 const BasicTable = () => {
+  const { employeesData } = useContext(DataContext)
   return (
     <MaterialTable
       title="Current Employees"
       columns={columns}
-      data={employeesList}
+      data={employeesData}
       icons={tableIcons}
     />
   )

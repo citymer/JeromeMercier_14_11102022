@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/Error404.jsx</title>
+    <title>JSDoc: Source: components/ButtonCurrent.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/Error404.jsx</h1>
+    <h1 class="page-title">Source: components/ButtonCurrent.jsx</h1>
 
     
 
@@ -27,30 +27,24 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react'
-import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 
 /**
- * builds a page that displays an error
- * @returns an error page
+ * builds a button
+ * @returns a button
  */
-const Error404 = () => {
+
+const ButtonCurrent = () => {
   return (
-    &lt;div>
-      &lt;Header />
-      &lt;div className="contenth2">
-        &lt;h2>Erreur 404&lt;/h2>
-      &lt;/div>
-      &lt;div className="link">
-        &lt;Link className="lien" to="/">
-          Home
-        &lt;/Link>
-      &lt;/div>
+    &lt;div className="link">
+      &lt;Link className="lien" to="/current-employees">
+        View Current Employees
+      &lt;/Link>
     &lt;/div>
   )
 }
 
-export default Error404
+export default ButtonCurrent
 </code></pre>
         </article>
     </section>
