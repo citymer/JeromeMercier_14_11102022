@@ -1,12 +1,15 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, Fragment } from 'react'
 import Select from 'react-select'
 import { useForm, Controller } from 'react-hook-form'
 import { statesName } from '../datas/states'
 import { DataContext } from '../utils/context'
+//.@ts-ignore
+import { Modal } from 'simply-modale'
 //import { employeesList } from '../datas/employees'
 
 const Formulaire = () => {
   const [form, setForm] = useState({})
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   //const [employeesData, setEmployeesData] = useState(employeesList)
   const { addEmployees } = useContext(DataContext)
   //const { setEmployeesData } = useContext(DataContext)
@@ -44,16 +47,19 @@ const Formulaire = () => {
       zipcode: data.zipcode,
     })
     createSucces()
+    setModalIsOpen(true)
   }
-
+  const closeModal = () => {
+    setModalIsOpen(false)
+  }
   /*
   useEffect(() => {
     reset()
   }, [isSubmitSuccessful, reset])
 */
+  const title = 'New employee created !'
   return (
-    <div>
-      {isSubmitSuccessful && <div className="alert">Employee Created! && </div>}
+    <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <p>First Name</p>
         <input
@@ -171,7 +177,10 @@ const Formulaire = () => {
         <p className="error">{errors.departement?.message}</p>
         <input type="submit" className="submit" value="Save" />
       </form>
-    </div>
+      <Fragment>
+        {modalIsOpen && <Modal closeModal={closeModal} title={title} />}
+      </Fragment>
+    </>
   )
 }
 
