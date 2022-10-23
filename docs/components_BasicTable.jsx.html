@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/Home.jsx</title>
+    <title>JSDoc: Source: components/BasicTable.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/Home.jsx</h1>
+    <h1 class="page-title">Source: components/BasicTable.jsx</h1>
 
     
 
@@ -26,32 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import Header from '../components/Header'
-import ButtonCurrent from '../components/ButtonCurrent'
-import Formulaire from '../components/Formulaire'
+            <pre class="prettyprint source linenums"><code>import React, { useContext } from 'react'
+import MaterialTable from 'material-table'
+import tableIcons from '../utils/IconProvider.js'
+import { DataContext } from '../utils/context.jsx'
+import { columns } from '../utils/colums'
 
 /**
- * function that creates the home page with its components
- * @returns the Home page HTML
+ * builds a table with employee data
+ * @returns the table of employees
  */
 
-const Home = () => {
+const BasicTable = () => {
+  const { employeesData } = useContext(DataContext)
+
   return (
-    &lt;div>
-      &lt;Header />
-      &lt;main>
-        &lt;ButtonCurrent />
-        &lt;section className="formulaire">
-          &lt;h1>Create Employee&lt;/h1>
-          &lt;Formulaire />
-        &lt;/section>
-      &lt;/main>
-    &lt;/div>
+    &lt;MaterialTable
+      title="Current Employees"
+      columns={columns}
+      data={employeesData}
+      icons={tableIcons}
+    />
   )
 }
 
-export default Home
+export default BasicTable
 </code></pre>
         </article>
     </section>

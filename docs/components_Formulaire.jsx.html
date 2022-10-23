@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Formulaire.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Formulaire.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useContext, Fragment, useEffect } from 'react'
+import Select from 'react-select'
+import { useForm, Controller } from 'react-hook-form'
+import { statesName } from '../datas/states'
+import { DataContext } from '../utils/context'
+import { Modal } from 'simply-modale'
+
+/**
+ * builds a form with different fields to fill
+ * @returns a form
+ */
+
+const Formulaire = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const { addEmployees } = useContext(DataContext)
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      street: '',
+      city: '',
+      zipcode: '',
+    },
+  })
+
+  /**
+   * recover the data and put it in the right format
+   * @param {object} data
+   * @param {event} e
+   * @return {object} the data entered in the form in the correct format
+   */
+
+  const onSubmit = (data, e) => {
+    e.preventDefault()
+    addEmployees({
+      firstname: data.firstName,
+      lastname: data.lastName,
+      stardate: data.stardate,
+      departement: data.departement.value,
+      dateOfBirth: data.dateOfBirth,
+      street: data.street,
+      city: data.city,
+      state: data.state.value,
+      zipcode: data.zipcode,
+    })
+    setModalIsOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalIsOpen(false)
+  }
+
+  useEffect(() => {
+    reset()
+  }, [isSubmitSuccessful, reset])
+
+  // writes the text contained in the modal
+  const title = 'New employee created !'
+
+  return (
+    &lt;>
+      &lt;form onSubmit={handleSubmit(onSubmit)}>
+        &lt;p>First Name&lt;/p>
+        &lt;input
+          {...register('firstName', {
+            required: 'this is required',
+            minLength: {
+              value: 2,
+              message: 'Min length is 2',
+            },
+            pattern: /[A-Za-z]/,
+          })}
+        />
+        &lt;p className="error">{errors.firstName?.message}&lt;/p>
+        &lt;p>last Name&lt;/p>
+        &lt;input
+          {...register('lastName', {
+            required: 'this is required',
+            minLength: {
+              value: 2,
+              message: 'Min length is 2',
+            },
+            pattern: /[A-Za-z]/,
+          })}
+        />
+        &lt;p className="error">{errors.lastName?.message}&lt;/p>
+        &lt;p>Date of Birth&lt;/p>
+        &lt;Controller
+          name="dateOfBirth"
+          control={control}
+          defaultValue=""
+          rules={{
+            required: {
+              value: true,
+              message: 'Enter Date of birth',
+            },
+          }}
+          render={({ field: { ref, ...rest } }) => (
+            &lt;input type="date" {...rest} />
+          )}
+        />
+        &lt;p className="error">{errors.dateOfBirth?.message}&lt;/p>
+        &lt;p>Start Date&lt;/p>
+        &lt;Controller
+          name="stardate"
+          control={control}
+          defaultValue=""
+          rules={{
+            required: {
+              value: true,
+              message: 'Enter Start date',
+            },
+          }}
+          render={({ field: { ref, ...rest } }) => (
+            &lt;input type="date" {...rest} />
+          )}
+        />
+        &lt;p className="error">{errors.stardate?.message}&lt;/p>
+        &lt;fieldset>
+          &lt;legend>Address&lt;/legend>
+          &lt;p>Street&lt;/p>
+          &lt;input {...register('street', { required: 'Enter your street' })} />
+          &lt;p className="error">{errors.street?.message}&lt;/p>
+          &lt;p>City&lt;/p>
+          &lt;input {...register('city', { required: 'Enter your city' })} />
+          &lt;p className="error">{errors.city?.message}&lt;/p>
+          &lt;p>State&lt;/p>
+          &lt;Controller
+            name="state"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: {
+                value: true,
+                message: 'Enter your state',
+              },
+            }}
+            render={({ field }) => &lt;Select {...field} options={statesName} />}
+          />
+          &lt;p className="error">{errors.state?.message}&lt;/p>
+          &lt;p>Zip Code&lt;/p>
+          &lt;input
+            type="number"
+            {...register('zipcode', {
+              required: 'Enter your zip code',
+              min: 0,
+              max: 999999,
+            })}
+          />
+          &lt;p className="error">{errors.zipcode?.message}&lt;/p>
+        &lt;/fieldset>
+        &lt;p>Departement&lt;/p>
+        &lt;Controller
+          name="departement"
+          defaultValue=""
+          rules={{
+            required: {
+              value: true,
+              message: 'Enter your departement',
+            },
+          }}
+          control={control}
+          render={({ field }) => (
+            &lt;Select
+              {...field}
+              options={[
+                { value: 'sales', label: 'Sales' },
+                { value: 'marketing', label: 'Marketing' },
+                { value: 'engineering', label: 'Engineering' },
+                { value: 'humanresources', label: 'Human Resources' },
+                { value: 'legal', label: 'Legal' },
+              ]}
+            />
+          )}
+        />
+        &lt;p className="error">{errors.departement?.message}&lt;/p>
+        &lt;input type="submit" className="submit" value="Save" />
+      &lt;/form>
+      &lt;Fragment>
+        {modalIsOpen &amp;&amp; &lt;Modal closeModal={closeModal} title={title} />}
+      &lt;/Fragment>
+    &lt;/>
+  )
+}
+
+export default Formulaire
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BasicTable">BasicTable</a></li><li><a href="global.html#ButtonCurrent">ButtonCurrent</a></li><li><a href="global.html#CurrentEmployees">CurrentEmployees</a></li><li><a href="global.html#Error404">Error404</a></li><li><a href="global.html#Formulaire">Formulaire</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Home">Home</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sun Oct 23 2022 14:06:43 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
