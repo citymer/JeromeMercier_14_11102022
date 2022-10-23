@@ -3,19 +3,12 @@ import Select from 'react-select'
 import { useForm, Controller } from 'react-hook-form'
 import { statesName } from '../datas/states'
 import { DataContext } from '../utils/context'
-//.@ts-ignore
 import { Modal } from 'simply-modale'
 
-//import { employeesList } from '../datas/employees'
-
 const Formulaire = () => {
-  const [form, setForm] = useState({})
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  //const [employeesData, setEmployeesData] = useState(employeesList)
   const { addEmployees } = useContext(DataContext)
-  //const { setEmployeesData } = useContext(DataContext)
-  //console.log(employeesData)
-  //console.log(form)
+
   const {
     register,
     handleSubmit,
@@ -31,12 +24,10 @@ const Formulaire = () => {
       zipcode: '',
     },
   })
-  const createSucces = () => {
-    addEmployees(form)
-  }
+
   const onSubmit = (data, e) => {
     e.preventDefault()
-    setForm({
+    addEmployees({
       firstname: data.firstName,
       lastname: data.lastName,
       stardate: data.stardate,
@@ -47,7 +38,7 @@ const Formulaire = () => {
       state: data.state.value,
       zipcode: data.zipcode,
     })
-    createSucces()
+
     setModalIsOpen(true)
   }
   const closeModal = () => {
