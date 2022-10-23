@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
-import './index.css'
+import './styles/index.scss'
 import DataProvider from './utils/context'
 
 const container = document.getElementById('root')
