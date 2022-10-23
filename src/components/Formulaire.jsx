@@ -1,10 +1,11 @@
-import React, { useState, useContext, Fragment } from 'react'
+import React, { useState, useContext, Fragment, useEffect } from 'react'
 import Select from 'react-select'
 import { useForm, Controller } from 'react-hook-form'
 import { statesName } from '../datas/states'
 import { DataContext } from '../utils/context'
 //.@ts-ignore
 import { Modal } from 'simply-modale'
+
 //import { employeesList } from '../datas/employees'
 
 const Formulaire = () => {
@@ -19,7 +20,7 @@ const Formulaire = () => {
     register,
     handleSubmit,
     control,
-
+    reset,
     formState: { errors, isSubmitSuccessful },
   } = useForm({
     defaultValues: {
@@ -52,11 +53,11 @@ const Formulaire = () => {
   const closeModal = () => {
     setModalIsOpen(false)
   }
-  /*
+
   useEffect(() => {
     reset()
   }, [isSubmitSuccessful, reset])
-*/
+
   const title = 'New employee created !'
   return (
     <>
