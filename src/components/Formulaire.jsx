@@ -5,6 +5,11 @@ import { statesName } from '../datas/states'
 import { DataContext } from '../utils/context'
 import { Modal } from 'simply-modale'
 
+/**
+ * builds a form with different fields to fill
+ * @returns a form
+ */
+
 const Formulaire = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const { addEmployees } = useContext(DataContext)
@@ -25,6 +30,13 @@ const Formulaire = () => {
     },
   })
 
+  /**
+   * recover the data and put it in the right format
+   * @param {object} data
+   * @param {event} e
+   * @return {object} the data entered in the form in the correct format
+   */
+
   const onSubmit = (data, e) => {
     e.preventDefault()
     addEmployees({
@@ -38,9 +50,9 @@ const Formulaire = () => {
       state: data.state.value,
       zipcode: data.zipcode,
     })
-
     setModalIsOpen(true)
   }
+
   const closeModal = () => {
     setModalIsOpen(false)
   }
@@ -49,7 +61,9 @@ const Formulaire = () => {
     reset()
   }, [isSubmitSuccessful, reset])
 
+  // writes the text contained in the modal
   const title = 'New employee created !'
+
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
