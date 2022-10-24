@@ -3,6 +3,7 @@ import MaterialTable from 'material-table'
 import tableIcons from '../utils/IconProvider.js'
 import { DataContext } from '../utils/context.jsx'
 import { columns } from '../utils/colums'
+import { ThemeProvider, createTheme } from '@mui/material'
 
 /**
  * builds a table with employee data
@@ -11,14 +12,17 @@ import { columns } from '../utils/colums'
 
 const BasicTable = () => {
   const { employeesData } = useContext(DataContext)
-
+  console.log(employeesData)
+  const defaultMaterialTheme = createTheme()
   return (
-    <MaterialTable
-      title="Current Employees"
-      columns={columns}
-      data={employeesData}
-      icons={tableIcons}
-    />
+    <ThemeProvider theme={defaultMaterialTheme}>
+      <MaterialTable
+        title="Current Employees"
+        columns={columns}
+        data={employeesData}
+        icons={tableIcons}
+      />
+    </ThemeProvider>
   )
 }
 
