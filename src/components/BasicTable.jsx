@@ -12,7 +12,7 @@ import { ThemeProvider, createTheme } from '@mui/material'
 
 const BasicTable = () => {
   const { employeesData } = useContext(DataContext)
-  console.log(employeesData)
+
   const defaultMaterialTheme = createTheme()
   return (
     <ThemeProvider theme={defaultMaterialTheme}>

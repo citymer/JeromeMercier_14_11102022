@@ -37,7 +37,6 @@ const Formulaire = () => {
    * @return {object} the data entered in the form in the correct format
    */
   const onSubmit = (data, e) => {
-    console.log(data)
     e.preventDefault()
     addEmployees({
       firstname: data.firstName,
