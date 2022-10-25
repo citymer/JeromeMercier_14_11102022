@@ -10,9 +10,9 @@
   font-size: 25px;
   color: $white;
   text-decoration: none;
-  background-color: $color-primaire;
-  border-bottom: 5px solid $color-border;
-  text-shadow: 0px -2px $color-border;
+  background-color: $color-border;
+  border-bottom: 5px solid $color-primaire;
+
   transition: all 0.1s;
 }
 .lien:active {

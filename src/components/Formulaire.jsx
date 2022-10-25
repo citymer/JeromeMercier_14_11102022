@@ -66,71 +66,95 @@ const Formulaire = () => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <p>First Name</p>
-        <input
-          {...register('firstName', {
-            required: 'this is required',
-            minLength: {
-              value: 2,
-              message: 'Min length is 2',
-            },
-            pattern: /[A-Za-z]/,
-          })}
-        />
-        <p className="error">{errors.firstName?.message}</p>
-        <p>last Name</p>
-        <input
-          {...register('lastName', {
-            required: 'this is required',
-            minLength: {
-              value: 2,
-              message: 'Min length is 2',
-            },
-            pattern: /[A-Za-z]/,
-          })}
-        />
-        <p className="error">{errors.lastName?.message}</p>
-        <p>Date of Birth</p>
-        <Controller
-          name="dateOfBirth"
-          control={control}
-          defaultValue=""
-          rules={{
-            required: {
-              value: true,
-              message: 'Enter Date of birth',
-            },
-          }}
-          render={({ field: { ref, ...rest } }) => (
-            <input type="date" {...rest} />
-          )}
-        />
-        <p className="error">{errors.dateOfBirth?.message}</p>
-        <p>Start Date</p>
-        <Controller
-          name="stardate"
-          control={control}
-          defaultValue=""
-          rules={{
-            required: {
-              value: true,
-              message: 'Enter Start date',
-            },
-          }}
-          render={({ field: { ref, ...rest } }) => (
-            <input type="date" {...rest} />
-          )}
-        />
-        <p className="error">{errors.stardate?.message}</p>
+        <div className="block">
+          <label htmlFor="first">First Name</label>
+          <input
+            id="first"
+            {...register('firstName', {
+              required: 'this is required',
+              minLength: {
+                value: 2,
+                message: 'Min length is 2',
+              },
+              pattern: /[A-Za-z]/,
+            })}
+          />
+          <p className="error" role="alert">
+            {errors.firstName?.message}
+          </p>
+        </div>
+        <div className="block">
+          <label htmlFor="last">last Name</label>
+          <input
+            id="last"
+            {...register('lastName', {
+              required: 'this is required',
+              minLength: {
+                value: 2,
+                message: 'Min length is 2',
+              },
+              pattern: /[A-Za-z]/,
+            })}
+          />
+          <p className="error" role="alert">
+            {errors.lastName?.message}
+          </p>
+        </div>
+        <div className="block">
+          <label htmlFor="birth">Date of Birth</label>
+          <Controller
+            name="dateOfBirth"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: {
+                value: true,
+                message: 'Enter Date of birth',
+              },
+            }}
+            render={({ field: { ref, ...rest } }) => (
+              <input id="birth" type="date" {...rest} />
+            )}
+          />
+          <p className="error">{errors.dateOfBirth?.message}</p>
+        </div>
+        <div className="block">
+          <label htmlFor="start">Start Date</label>
+          <Controller
+            name="stardate"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: {
+                value: true,
+                message: 'Enter Start date',
+              },
+            }}
+            render={({ field: { ref, ...rest } }) => (
+              <input id="start" type="date" {...rest} />
+            )}
+          />
+          <p className="error">{errors.stardate?.message}</p>
+        </div>
         <fieldset>
           <legend>Address</legend>
-          <p>Street</p>
-          <input {...register('street', { required: 'Enter your street' })} />
-          <p className="error">{errors.street?.message}</p>
-          <p>City</p>
-          <input {...register('city', { required: 'Enter your city' })} />
-          <p className="error">{errors.city?.message}</p>
-          <p>State</p>
+          <label htmlFor="street">Street</label>
+          <input
+            id="street"
+            {...register('street', { required: 'Enter your street' })}
+          />
+          <p className="error" role="alert">
+            {errors.street?.message}
+          </p>
+          <label htmlFor="city">City</label>
+          <input
+            id="city"
+            {...register('city', { required: 'Enter your city' })}
+          />
+          <p className="error" role="alert">
+            {errors.city?.message}
+          </p>
+          <label>State</label>
           <Controller
             name="state"
             control={control}
@@ -141,11 +165,14 @@ const Formulaire = () => {
                 message: 'Enter your state',
               },
             }}
-            render={({ field }) => <Select {...field} options={statesName} />}
+            render={({ field }) => (
+              <Select aria-label="state" {...field} options={statesName} />
+            )}
           />
           <p className="error">{errors.state?.message}</p>
-          <p>Zip Code</p>
+          <label htmlFor="zip">Zip Code</label>
           <input
+            id="zip"
             type="number"
             {...register('zipcode', {
               required: 'Enter your zip code',
@@ -153,7 +180,9 @@ const Formulaire = () => {
               max: 999999,
             })}
           />
-          <p className="error">{errors.zipcode?.message}</p>
+          <p className="error" role="alert">
+            {errors.zipcode?.message}
+          </p>
         </fieldset>
         <p>Departement</p>
         <Controller
@@ -168,6 +197,7 @@ const Formulaire = () => {
           control={control}
           render={({ field }) => (
             <Select
+              aria-label="departement"
               {...field}
               options={[
                 { value: 'sales', label: 'Sales' },
