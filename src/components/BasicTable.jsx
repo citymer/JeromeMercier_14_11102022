@@ -12,8 +12,8 @@ import { ThemeProvider, createTheme } from '@mui/material'
 
 const BasicTable = () => {
   const { employeesData } = useContext(DataContext)
-
   const defaultMaterialTheme = createTheme()
+
   return (
     <ThemeProvider theme={defaultMaterialTheme}>
       <MaterialTable
@@ -21,6 +21,10 @@ const BasicTable = () => {
         columns={columns}
         data={employeesData}
         icons={tableIcons}
+        options={{
+          rowStyle: (data, index) =>
+            index % 2 === 0 ? { background: '#74a7e5' } : null,
+        }}
       />
     </ThemeProvider>
   )
