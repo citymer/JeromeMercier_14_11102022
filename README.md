@@ -11,6 +11,18 @@ converting a jQuery app to React
  ![SASS](https://img.shields.io/badge/SASS_V1.55.0-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
 
-## Installation
+## Installing and launching
+
+Clone the repository:
+
+```git clone https://github.com/citymer/JeromeMercier_14_11102022.git ```
+
+install dependencies:
+
+```yarn install```
+
+Lauch on port 3000:
+
+```yarn start```
 
 
