@@ -25,4 +25,12 @@ Lauch on port 3000:
 
 ```yarn start```
 
+## Library used
 
+- React Hook Form
+- React select
+- Material-Table
+
+### library used and created by me
+
+- simply-modale
