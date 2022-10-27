@@ -34,3 +34,4 @@ Lauch on port 3000:
 ### library used and created by me
 
 - simply-modale
+Meeting on [simply-modale](https://github.com/citymer/simply-modale)
