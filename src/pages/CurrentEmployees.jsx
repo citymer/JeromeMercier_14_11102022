@@ -1,7 +1,7 @@
 import React from 'react'
 import BasicTable from '../components/BasicTable'
 import Header from '../components/Header'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 /**
  * function that create the current-employees page with its components
@@ -15,9 +15,9 @@ const CurrentEmployees = () => {
         <BasicTable />
       </div>
       <div className="link">
-        <Link className="lien" to="/">
+        <NavLink className="lien" to="/">
           Home
-        </Link>
+        </NavLink>
       </div>
     </div>
   )

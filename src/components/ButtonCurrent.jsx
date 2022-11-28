@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 /**
  * builds a button
@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom'
 const ButtonCurrent = () => {
   return (
     <div className="link">
-      <Link className="lien" to="/current-employees">
+      <NavLink className="lien" to="/current-employees">
         View Current Employees
-      </Link>
+      </NavLink>
     </div>
   )
 }

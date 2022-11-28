@@ -1,7 +1,7 @@
 // breakpoint
 
 @mixin large {
-  @media screen and (max-width: 810px) {
+  @media screen and (max-width: 768px) {
     @content;
   }
 }

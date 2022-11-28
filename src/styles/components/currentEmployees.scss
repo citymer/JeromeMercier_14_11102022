@@ -1,5 +1,11 @@
 @import '../utils/variables.scss';
+@import '../utils/mixins.scss';
 
 .contentTable {
-    margin: 50px;
+  width: 90%;
+  margin: 60px;
+  @include large {
+    margin: 5px;
+    width: 96%;
+  }
 }

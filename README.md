@@ -1,46 +1,37 @@
-# Getting Started with Create React App and Redux
+# HRNet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+converting a jQuery app to React
 
-## Available Scripts
+## Technologies
 
-In the project directory, you can run:
+![React](https://img.shields.io/badge/react-V18.2.0-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-### `npm start`
+![React Router](https://img.shields.io/badge/React_Router_Dom-V6.4.2-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![SASS](https://img.shields.io/badge/SASS_V1.55.0-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installing and launching
 
-### `npm test`
+Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`git clone https://github.com/citymer/JeromeMercier_14_11102022.git `
 
-### `npm run build`
+install dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`yarn install`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Lauch on port 3000:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`yarn start`
 
-### `npm run eject`
+## Library used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- React Hook Form
+- React select
+- Material-Table
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### library used and created by me
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- simply-modale
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Meeting on [simply-modale](https://github.com/citymer/simply-modale)

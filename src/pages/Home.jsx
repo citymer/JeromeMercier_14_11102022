@@ -10,7 +10,7 @@ import Formulaire from '../components/Formulaire'
 
 const Home = () => {
   return (
-    <div>
+    <div className="home">
       <Header />
       <main>
         <ButtonCurrent />
