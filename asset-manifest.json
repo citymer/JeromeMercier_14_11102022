@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/JeromeMercier_14_11102020/static/css/main.9ca71a1a.css",
+    "main.js": "/JeromeMercier_14_11102020/static/js/main.1bd28619.js",
+    "static/js/432.2279b2e1.chunk.js": "/JeromeMercier_14_11102020/static/js/432.2279b2e1.chunk.js",
+    "static/js/963.58e6c5c6.chunk.js": "/JeromeMercier_14_11102020/static/js/963.58e6c5c6.chunk.js",
+    "static/js/413.eb33d7fa.chunk.js": "/JeromeMercier_14_11102020/static/js/413.eb33d7fa.chunk.js",
+    "static/js/796.b1c92505.chunk.js": "/JeromeMercier_14_11102020/static/js/796.b1c92505.chunk.js",
+    "static/js/433.df265fde.chunk.js": "/JeromeMercier_14_11102020/static/js/433.df265fde.chunk.js",
+    "static/media/logo_hrnet.png": "/JeromeMercier_14_11102020/static/media/logo_hrnet.1e941548977d2011d40d.png",
+    "static/media/cancel.png": "/JeromeMercier_14_11102020/static/media/cancel.dcf94367e9379947f510.png",
+    "index.html": "/JeromeMercier_14_11102020/index.html",
+    "main.9ca71a1a.css.map": "/JeromeMercier_14_11102020/static/css/main.9ca71a1a.css.map",
+    "main.1bd28619.js.map": "/JeromeMercier_14_11102020/static/js/main.1bd28619.js.map",
+    "432.2279b2e1.chunk.js.map": "/JeromeMercier_14_11102020/static/js/432.2279b2e1.chunk.js.map",
+    "963.58e6c5c6.chunk.js.map": "/JeromeMercier_14_11102020/static/js/963.58e6c5c6.chunk.js.map",
+    "413.eb33d7fa.chunk.js.map": "/JeromeMercier_14_11102020/static/js/413.eb33d7fa.chunk.js.map",
+    "796.b1c92505.chunk.js.map": "/JeromeMercier_14_11102020/static/js/796.b1c92505.chunk.js.map",
+    "433.df265fde.chunk.js.map": "/JeromeMercier_14_11102020/static/js/433.df265fde.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ca71a1a.css",
+    "static/js/main.1bd28619.js"
+  ]
+}
